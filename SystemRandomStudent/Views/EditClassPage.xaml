@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SystemRandomStudent.Views.EditClassPage"
+    StyleClass="page"
+    Title="Edit Class">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="{Binding ClassName, Source={x:Reference Name=currentClass}}"
+               FontSize="24"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+
+        <HorizontalStackLayout Spacing="10">
+            <Entry x:Name="StudentNameEntry"
+                   Placeholder="Imię i nazwisko ucznia"
+                   HorizontalOptions="FillAndExpand"/>
+            <Button Text="Dodaj ucznia"
+                    Clicked="OnAddStudentClicked"
+                    StyleClass="button"/>
+        </HorizontalStackLayout>
+
+        <CollectionView x:Name="StudentsCollection"
+                        SelectionMode="None"
+                        HeightRequest="250">
+
+            <CollectionView.Header>
+                <HorizontalStackLayout Spacing="10" Padding="5">
+                    <Label Text="#" WidthRequest="30" TextColor="White" FontAttributes="Bold"/>
+                    <Label Text="Imię i nazwisko" WidthRequest="150" TextColor="White" FontAttributes="Bold"/>
+                    <Label Text="Obecny" WidthRequest="70" TextColor="White" FontAttributes="Bold"/>
+                    <Label Text="Szczęśliwy numerek" WidthRequest="120" TextColor="White" FontAttributes="Bold"/>
+                </HorizontalStackLayout>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Label Text="{Binding IndexNumber}" WidthRequest="30" TextColor="White"/>
+                        <Label Text="{Binding Name}" WidthRequest="150" TextColor="White"/>
+                        <CheckBox IsChecked="{Binding IsPresent}" CheckedChanged="OnIsPresentChanged"/>
+                        <CheckBox IsChecked="{Binding LuckyNumber}" CheckedChanged="OnLuckyNumberChanged"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <Button Text="Zapisz klasę"
+                Clicked="OnSaveClicked"
+                StyleClass="button"/>
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SystemRandomStudent.Views.MainPage"
+    StyleClass="page"
+    Title="SystemRandomStudent">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="Select Class" StyleClass="label"/>
+        <Picker x:Name="ClassPicker"
+                Title="Choose class"
+                SelectedIndexChanged="OnClassChanged" />
+
+        <HorizontalStackLayout Spacing="10">
+            <Entry x:Name="NewClassEntry"
+                   Placeholder="New class name"
+                   HorizontalOptions="FillAndExpand"/>
+            <Button Text="Add Class"
+                    Clicked="OnAddClassClicked"
+                    StyleClass="button"/>
+        </HorizontalStackLayout>
+
+        <CollectionView x:Name="StudentsCollection"
+                        SelectionMode="None"
+                        HeightRequest="200">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="{Binding IndexNumber}" WidthRequest="30" TextColor="White"/>
+                        <Label Text="{Binding Name}" WidthRequest="150" TextColor="White"/>
+                        <CheckBox IsChecked="{Binding IsPresent}" />
+                        <CheckBox IsChecked="{Binding LuckyNumber}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Draw Student"
+                Clicked="OnDrawClicked"
+                StyleClass="button" />
+
+        <Label x:Name="ResultLabel"
+               FontSize="24"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+
+        <Button Text="Edit Class"
+                Clicked="OnEditClassClicked"
+                StyleClass="button" />
+
+    </VerticalStackLayout>
+</ContentPage>
