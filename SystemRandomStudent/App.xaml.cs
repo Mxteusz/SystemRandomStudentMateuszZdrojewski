@@ -1,15 +1,13 @@
-﻿namespace SystemRandomStudent
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
-        }
+﻿using SystemRandomStudent.Views;
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+namespace SystemRandomStudent;
+
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new NavigationPage(new MainPage());
     }
 }

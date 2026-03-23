@@ -39,3 +39,14 @@ Entry {
 CheckBox {
     color: #00ffcc;
 }
+
+navigationpage {
+    -maui-bar-background-color: #1e3a8a;
+    -maui-bar-text-color: white;
+}
+
+.titleLabel {
+    font-size: 22;
+    font-weight: bold;
+    color: white;
+}
